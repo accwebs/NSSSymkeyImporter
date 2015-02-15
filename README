@@ -1,0 +1,54 @@
+******************************************************
+Title       : NSSSymkeyImporter
+Project URL : https://github.com/accwebs/NSSSymkeyImporter
+
+Authors     : Aaron Curley <accwebs@gmail.com>
+
+              (some CMake project file "inspiration"
+               from the open source GPShell/GlobalPlatform
+               library, which is under the same license)
+
+License     : See file LICENSE
+Requires    : Network Security Services (cryptographic library)
+******************************************************
+
+
+--------------------------
+  Introduction & Credits
+--------------------------
+
+NSSSymkeyImporter is a simple command line tool that permanently imports a
+2-key TDES symmetric key into an NSS database.
+
+ 
+--------------------------
+ Downloading & Compiling
+--------------------------
+
+Due to the simplistic and "beta" nature of the code, the author does not 
+intend to distribute binaries at this time.  Compilation is fairly simple;
+however, using CMake.  
+
+Required third party dependencies:
+* NSS        (headers and libraries)
+
+Tested compilers:
+* Visual Studio 2010
+* Visual Studio 2013
+* GCC 4.8 64-bit
+
+
+--------------------------
+ Program Use & Execution
+--------------------------
+Usage: 
+  NSSSymkeyImporter.exe <nss_db_dir> <nss_pin> <slot_name> <key_name> <key_data>
+    nss_db_dir - Path to directory containing NSS database files.
+    nss_pin    - PIN / password for the NSS database.
+    slot_name  - Name of destination slot. Specify 'internal' for internal token.
+    key_name   - Key nickname to assign to the imported key.
+    key_data   - Key data specified in ASCII-HEX format.
+
+Example:
+  NSSSymkeyImporter . "password" internal testkey 404142434445464748494a4b4c4d4e4f
+
